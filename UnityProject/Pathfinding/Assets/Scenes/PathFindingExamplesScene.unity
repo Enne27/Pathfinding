@@ -11595,19 +11595,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 558934795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9132547730535439054}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &558934795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26139,19 +26127,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1189356640}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9132547730535439054}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1189356640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37616,7 +37592,7 @@ MonoBehaviour:
   maxTerrainCost: 20
   nodeModifierMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!4 &1744272575
 Transform:
   m_ObjectHideFlags: 0
@@ -45827,13 +45803,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4560519928399398932, guid: 20fbb01830ddaf34fae85aaf9d00bbae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9132547730535439055}
   m_SourcePrefab: {fileID: 100100000, guid: 20fbb01830ddaf34fae85aaf9d00bbae, type: 3}
 --- !u!1 &9132547730535439054 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4560519928399398932, guid: 20fbb01830ddaf34fae85aaf9d00bbae, type: 3}
   m_PrefabInstance: {fileID: 9132547730535439053}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9132547730535439055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9132547730535439054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1174eb39fd47dfc44bec69388b2fe581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UserMove
+  pathUser: {fileID: 0}
+  playButton: {fileID: 0}
+  restartButton: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
