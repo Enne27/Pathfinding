@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5429214408915146164, guid: 20fbb01830ddaf34fae85aaf9d00bbae, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f03487254491aee41a0c580618ed1af2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -80,7 +84,7 @@ MonoBehaviour:
   pathUser: {fileID: 7656174910266312380}
   playButton: {fileID: 0}
   goBackButton: {fileID: 0}
-  restartButton: {fileID: 0}
+  restartPositionButton: {fileID: 0}
   algorithm: 0
   speed: 2
 --- !u!114 &7656174910266312380 stripped

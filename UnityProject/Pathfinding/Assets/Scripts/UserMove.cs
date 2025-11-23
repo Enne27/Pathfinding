@@ -47,6 +47,7 @@ public class UserMove : MonoBehaviour
 
     void ReturnToOriginalPos() 
     { 
+        StopAllCoroutines();
         transform.position = originalPos; 
         visitedNodes.Clear();
         goingBack = false;
