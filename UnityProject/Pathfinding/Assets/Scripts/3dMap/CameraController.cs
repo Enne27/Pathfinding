@@ -5,11 +5,19 @@ using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
-    private void Update()
+    public float maxZ = 1f;
+    private void LateUpdate()
     {
-        if(transform.position.z > 1)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 1);
-        }
+        #region VIEJO
+        //if (transform.position.z > 1)
+        //{
+        //    transform.position = new Vector3(transform.position.x, transform.position.y, 1);
+        //}
+        #endregion
+        Vector3 pos = transform.position;
+        if (pos.z > maxZ)
+            pos.z = maxZ;
+
+        transform.position = pos;
     }
 }

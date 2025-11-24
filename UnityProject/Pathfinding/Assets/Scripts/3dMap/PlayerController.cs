@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -125,33 +124,42 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixOrientationAlignment()
     {
-        // Si la velocidad deseada es mayor que un valor m�nimo, actualizamos la direcci�n
+        #region VIEJO
+        //// Si la velocidad deseada es mayor que un valor m�nimo, actualizamos la direcci�n
+        //if (agent.desiredVelocity.sqrMagnitude > 0.1f)
+        //{
+        //    desiredForward = agent.desiredVelocity.normalized;  // Actualizar direcci�n hacia adelante
+        //}
+
+        //desiredUp = GetGroundNormal();  // Obtener la normal del suelo
+        //Quaternion desiredForwardRotation = Quaternion.identity;
+        //Quaternion desiredUpRotation = Quaternion.identity;
+
+        //// Calcular el �ngulo de rotaci�n hacia adelante
+        //float forwardAngle = Vector3.Angle(transform.forward, desiredForward);
+        //if (forwardAngle > minAngularDistance)
+        //{
+        //    desiredForwardRotation = Quaternion.AngleAxis(forwardAngle, Vector3.Cross(transform.forward, desiredForward));
+        //}
+
+        //// Calcular el �ngulo de rotaci�n hacia arriba
+        //float upAngle = Vector3.Angle(transform.up, desiredUp);
+        //if (upAngle > minAngularDistance)
+        //{
+        //    desiredUpRotation = Quaternion.AngleAxis(upAngle, Vector3.Cross(transform.up, desiredUp));
+        //}
+
+        //// Calcular la rotaci�n final deseada y aplicarla suavemente
+        //Quaternion desiredRotation = desiredForwardRotation * desiredUpRotation * transform.rotation;
+        //transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * lookRotationSpeed);
+        #endregion
         if (agent.desiredVelocity.sqrMagnitude > 0.1f)
-        {
-            desiredForward = agent.desiredVelocity.normalized;  // Actualizar direcci�n hacia adelante
-        }
+            desiredForward = agent.desiredVelocity.normalized;
 
-        desiredUp = GetGroundNormal();  // Obtener la normal del suelo
-        Quaternion desiredForwardRotation = Quaternion.identity;
-        Quaternion desiredUpRotation = Quaternion.identity;
+        desiredUp = GetGroundNormal();
 
-        // Calcular el �ngulo de rotaci�n hacia adelante
-        float forwardAngle = Vector3.Angle(transform.forward, desiredForward);
-        if (forwardAngle > minAngularDistance)
-        {
-            desiredForwardRotation = Quaternion.AngleAxis(forwardAngle, Vector3.Cross(transform.forward, desiredForward));
-        }
-
-        // Calcular el �ngulo de rotaci�n hacia arriba
-        float upAngle = Vector3.Angle(transform.up, desiredUp);
-        if (upAngle > minAngularDistance)
-        {
-            desiredUpRotation = Quaternion.AngleAxis(upAngle, Vector3.Cross(transform.up, desiredUp));
-        }
-
-        // Calcular la rotaci�n final deseada y aplicarla suavemente
-        Quaternion desiredRotation = desiredForwardRotation * desiredUpRotation * transform.rotation;
-        transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * lookRotationSpeed);
+        Quaternion targetRot = Quaternion.LookRotation(desiredForward, desiredUp);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * lookRotationSpeed);
     }
 
     /// <summary>
@@ -159,12 +167,18 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private Vector3 GetGroundNormal()
     {
+        #region VIEJO
         Ray ray = new Ray(transform.position, Vector3.down);
         if (Physics.Raycast(ray, out RaycastHit info, clickableLayer))
         {
             return info.normal;  // devuelve la normal del suelo
         }
         return Vector3.up;  // Si no se encuentra, devuelve el vector hacia arriba
+        #endregion
+        if (Physics.Raycast(transform.position + Vector3.up * 0.2f, Vector3.down, out RaycastHit hit, 3f, clickableLayer))
+            return hit.normal;
+
+        return Vector3.up;
     }
 
     #region InputSection
